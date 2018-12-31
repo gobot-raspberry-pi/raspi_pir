@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"gobot.io/x/gobot"
 	"gobot.io/x/gobot/drivers/gpio"
@@ -11,17 +12,16 @@ import (
 func main() {
 	r := raspi.NewAdaptor()
 
-	sensor := gpio.NewPIRMotionDriver(r, "5")
-	led := gpio.NewLedDriver(r, "13")
-
+	sensor := gpio.NewPIRMotionDriver(r, "11")
+	led := gpio.NewLedDriver(r, "7")
 	work := func() {
 		sensor.On(gpio.MotionDetected, func(data interface{}) {
-			fmt.Println(gpio.MotionDetected)
+			fmt.Printf("Motion Detected at: %v\n", time.Now().Format(time.StampMilli))
 			led.On()
 		})
 
 		sensor.On(gpio.MotionStopped, func(data interface{}) {
-			fmt.Println(gpio.MotionStopped)
+			fmt.Printf("Motion Stopped at: %v\n", time.Now().Format(time.StampMilli))
 			led.Off()
 		})
 	}
