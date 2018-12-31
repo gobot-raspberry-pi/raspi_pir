@@ -14,6 +14,7 @@ func main() {
 
 	sensor := gpio.NewPIRMotionDriver(r, "11")
 	led := gpio.NewLedDriver(r, "7")
+
 	work := func() {
 		sensor.On(gpio.MotionDetected, func(data interface{}) {
 			fmt.Printf("Motion Detected at: %v\n", time.Now().Format(time.StampMilli))
