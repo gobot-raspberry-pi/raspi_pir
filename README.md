@@ -47,3 +47,5 @@ PIR motion sensor application using GOBOT. If the sensor would sense movement th
  
 ## Notes
 
+1. PIR sensor has two knobs, the sensitivity and the range, must experiment in adjusting the two knobs for testing. The left side is the sensitivity knob, the right side is the settings for the range (looking underneath the sensor with the knobs on upper view).
+2. Upon running the app, has to wait for 10-60 seconds without any movement infront of the sensor. This is to let the sensor learn from it's environment
